@@ -2,6 +2,19 @@ var express = require('express');
 
 var app = express();
 
+var path = require('path');
+var mongoose = require('mongoose');
+
+/*
+mongoose.connect("mongodb://<dbuser>:<dbpassword>");
+var db = mongoose.connection;
+db.once("open", function(){
+  console.log("DB connected!");
+});
+db.on("error", function(err){
+  console.log("DB ERROR : ", err);
+});
+*/
 /*
 app.get('/', function(req, res){
   res.send('Hello World1!');
