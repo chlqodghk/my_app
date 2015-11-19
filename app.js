@@ -5,8 +5,7 @@ var app = express();
 var path = require('path');
 var mongoose = require('mongoose');
 
-
-mongoose.connect("mongodb://<dbuser>:<dbpassword>");
+mongoose.connect(process.env.mongo_db);
 var db = mongoose.connection;
 db.once("open", function(){
   console.log("DB connected!");
