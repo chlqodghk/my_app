@@ -51,6 +51,7 @@ var postSchema = mongoose.Schema({
 var Post = mongoose.model('post', postSchema);
 
 
+
 app.set("view engine", 'ejs');
 //app.use(express.static(__dirname + '/public'));
 console.log(__dirname);
