@@ -57,6 +57,7 @@ app.set("view engine", 'ejs');
 console.log(__dirname);
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 /*
 app.get('/', function(req, res){
   res.render('my_first_ejs');
@@ -127,12 +128,18 @@ app.get('/posts', function(req, res){
     res.render("posts/index", {data:posts});
   });
 }); // index
+
+app.get('/posts/new', function(req, res){
+  res.render("posts/new");
+});
+
 app.post('/posts', function(req, res){
   Post.create(req.body.post, function(err, posts){
     if(err){
       return res.json({success:false, message:err});
     }
-    res.json({success:true, data:posts});
+    //res.json({success:true, data:posts});
+    res.redirect('/posts');
   });
 }); // create
 
@@ -141,7 +148,8 @@ app.get('/posts/:id', function(req, res){
     if(err){
       return res.json({success:false, message:err});
     }
-    res.json({success:true, data:post});
+    //res.json({success:true, data:post});
+    res.render("posts/show", {data:post});
   });
 }); // show
 
@@ -163,6 +171,7 @@ app.delete('/posts/:id', function(req, res){
     res.json({success:true, message:post._id+" deleted"});
   });
 }); // delete
+
 
 
 
